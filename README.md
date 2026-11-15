@@ -34,7 +34,7 @@ pnpm dev                     # http://localhost:3000
 src/
   app/
     (marketing)/     public site: home, how it works, pricing, FAQ
-    (client)/portal  client portal: orders, tracker, messages
+    (client)/service client portal (/service): orders, tracker, messages
     (admin)/admin    staff portal: board, tags, inbox, weather, campaigns
     q/[slug]         QR ad short links (scan logging in ticket 1.2)
     api/             health check, later Twilio/Resend webhooks and cron
@@ -43,3 +43,11 @@ src/
 ```
 
 UI is intentionally generic until the brand pass (ticket 7.1).
+
+## Colour themes and fonts
+
+All colours are semantic tokens (`--primary`, `--accent`, `--muted`, ...) defined per theme in `src/app/globals.css` as `[data-theme="name"]` blocks, with light and dark values. Components only use token classes such as `bg-primary`. To try a new style, copy a theme block, change the values, add its name to `src/config/theme.ts`, and set `activeTheme`. Themes included: `rink` (default), `sunny`, `fresh`.
+
+Fonts load with `next/font`: Montserrat for body text, Bungee for headings (`src/app/fonts.ts`).
+
+The "Dev only" buttons on the home page (`src/components/dev-nav.tsx`) are temporary shortcuts to `/admin` and `/service`; remove them before launch.
