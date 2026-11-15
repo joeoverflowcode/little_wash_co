@@ -1,39 +1,158 @@
 @import "tailwindcss";
 
-/* Generic placeholder tokens. Brand colours and type replace these in the brand pass (ticket 7.1). */
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --muted: #f4f4f5;
-  --muted-foreground: #52525b;
-  --border: #e4e4e7;
-  --primary: #18181b;
-  --primary-foreground: #fafafa;
+/*
+ * Colour themes
+ * -------------
+ * Every colour in the app comes from these semantic tokens. Components only use
+ * Tailwind classes like `bg-primary` or `text-muted-foreground`, never raw hex.
+ *
+ * To try a new look: copy a [data-theme] block below, rename it, change the
+ * values, then set `activeTheme` in src/config/theme.ts. Nothing else changes.
+ * Each theme can also define its own dark-mode values inside the media query.
+ */
+
+/* Default theme: "rink" (ice white, navy, hockey-tape blue, sunshine accent) */
+:root,
+[data-theme="rink"] {
+  --background: #f7fafc;
+  --foreground: #0f1b2d;
+  --surface: #ffffff;
+  --muted: #e8eef5;
+  --muted-foreground: #4b5b70;
+  --border: #d3dde8;
+  --primary: #1d4ed8;
+  --primary-foreground: #ffffff;
+  --secondary: #0f1b2d;
+  --secondary-foreground: #f7fafc;
+  --accent: #fbbf24;
+  --accent-foreground: #0f1b2d;
+  --hero-from: #dbeafe;
+  --hero-to: #f7fafc;
+}
+
+/* "sunny": warm, sun-dried feel */
+[data-theme="sunny"] {
+  --background: #fffbf2;
+  --foreground: #2b1d0e;
+  --surface: #ffffff;
+  --muted: #fdf0d5;
+  --muted-foreground: #6b5537;
+  --border: #f1dfb8;
+  --primary: #ea580c;
+  --primary-foreground: #ffffff;
+  --secondary: #2b1d0e;
+  --secondary-foreground: #fffbf2;
+  --accent: #0ea5e9;
+  --accent-foreground: #ffffff;
+  --hero-from: #fde68a;
+  --hero-to: #fffbf2;
+}
+
+/* "fresh": clean mint and charcoal */
+[data-theme="fresh"] {
+  --background: #f5fbf8;
+  --foreground: #13221c;
+  --surface: #ffffff;
+  --muted: #e2f3eb;
+  --muted-foreground: #476157;
+  --border: #cbe6d9;
+  --primary: #059669;
+  --primary-foreground: #ffffff;
+  --secondary: #13221c;
+  --secondary-foreground: #f5fbf8;
+  --accent: #a78bfa;
+  --accent-foreground: #13221c;
+  --hero-from: #bbf7d0;
+  --hero-to: #f5fbf8;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #18181b;
-    --muted-foreground: #a1a1aa;
-    --border: #27272a;
-    --primary: #fafafa;
-    --primary-foreground: #18181b;
+  :root,
+  [data-theme="rink"] {
+    --background: #0a1220;
+    --foreground: #e8eef5;
+    --surface: #111c2e;
+    --muted: #16243a;
+    --muted-foreground: #9fb0c6;
+    --border: #22324a;
+    --primary: #60a5fa;
+    --primary-foreground: #0a1220;
+    --secondary: #e8eef5;
+    --secondary-foreground: #0a1220;
+    --accent: #fbbf24;
+    --accent-foreground: #0a1220;
+    --hero-from: #13294b;
+    --hero-to: #0a1220;
+  }
+
+  [data-theme="sunny"] {
+    --background: #1a1208;
+    --foreground: #fbeedb;
+    --surface: #24190c;
+    --muted: #2e2010;
+    --muted-foreground: #c9b08c;
+    --border: #3d2c16;
+    --primary: #fb923c;
+    --primary-foreground: #1a1208;
+    --secondary: #fbeedb;
+    --secondary-foreground: #1a1208;
+    --accent: #38bdf8;
+    --accent-foreground: #1a1208;
+    --hero-from: #3d2a0c;
+    --hero-to: #1a1208;
+  }
+
+  [data-theme="fresh"] {
+    --background: #0b1611;
+    --foreground: #e2f3eb;
+    --surface: #102019;
+    --muted: #152a21;
+    --muted-foreground: #95b5a7;
+    --border: #1f3a2e;
+    --primary: #34d399;
+    --primary-foreground: #0b1611;
+    --secondary: #e2f3eb;
+    --secondary-foreground: #0b1611;
+    --accent: #c4b5fd;
+    --accent-foreground: #0b1611;
+    --hero-from: #123826;
+    --hero-to: #0b1611;
   }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-hero-from: var(--hero-from);
+  --color-hero-to: var(--hero-to);
+
+  /* Set by next/font in src/app/fonts.ts */
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bungee), var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   font-family: var(--font-sans);
+}
+
+/* Headings use Bungee everywhere; body and paragraphs use Montserrat. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
