@@ -156,3 +156,17 @@ h6 {
   font-weight: 400;
   letter-spacing: 0.01em;
 }
+
+/* Promo flyer (/first-wash-free): fit one US Letter sheet when printed. */
+@media print {
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  .flyer-sheet {
+    min-height: 11in;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
