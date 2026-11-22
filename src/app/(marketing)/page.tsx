@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { Bubbles, Sun, Truck } from "lucide-react";
+import { BellRing, Sun, Truck } from "lucide-react";
 import { DevNav } from "@/components/dev-nav";
 
 const steps = [
-  { icon: Truck, title: "We pick up", text: "Leave your bag out. We grab it from your door." },
-  { icon: Bubbles, title: "Deep clean", text: "Every piece is washed and deodorized." },
-  { icon: Sun, title: "Sun-dried", text: "Dried in the Texas sun, then brought back fresh." },
+  { icon: Truck, title: "Drop off at the Rink", text: "Meet at Farmers Branch, Frisco or Plano Rink." },
+  { icon: Sun, title: "Hand Washed and Sun Dried", text: "Water, Detergent and Sun Dried for UV Exposure." },
+  { icon: BellRing, title: "Pickup at the Rink", text: "Coordinated Pickup Back at the Rink of Your Choice." },
 ];
 
 export default function HomePage() {
@@ -18,10 +18,10 @@ export default function HomePage() {
               Dallas hockey gear cleaning
             </p>
             <h1 className="text-4xl leading-tight md:text-6xl">
-              Fresh gear. <span className="text-primary">No stink.</span>
+              Clean Gear. <span className="text-primary">More Sty.</span>
             </h1>
             <p className="text-muted-foreground text-lg">
-              We pick up your hockey bag, deep-clean every piece, dry it in the Texas sun, and bring
+              We pick up your hockey bag, deep-clean every piece, air dry it, and bring
               it back ready for your next skate.
             </p>
             <div className="flex flex-wrap gap-3">
